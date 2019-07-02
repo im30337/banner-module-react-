@@ -10284,27 +10284,28 @@ var _App2 = _interopRequireDefault(_App);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var oprions = {
-  openAtStart: true, // [boolean] true | false
+  //openAtStart: false, // [boolean] true | false
   // 設定啟動後是否要自動開或合，若設為false，就不要自勳開合；若為true是馬上自動開合；若為數字是幾毫秒之後開合
-  autoToggle: true, // [boolean|number] true | false | 3000
-  button: {
-    closeText: "aaa", // [string]
-    openText: "bbb", // [string]
-    class: "btn" // [string]
-  },
+  //autoToggle: false, // [boolean|number] true | false | 3000
+  // button: {
+  //   closeText: "aaa", // [string]
+  //   openText: "bbb", // [string]
+  //   class: "btn" // [string]
+  // },
   class: {
-    closed: "closed", // [string]
-    closing: "closing", // [string]
-    opened: "opened", // [string]
-    opening: "opening" // [string]
-  },
-  transition: true,
-  whenTransition: function whenTransition() {
-    console.log("whenTransition");
-  }
-};
+    closed: "aaa", // [string]
+    closing: "aaa", // [string]
+    opened: "opeaaned", // [string]
+    opening: "opeaaning" // [string]
 
-_reactDom2.default.render(_react2.default.createElement(_App2.default, { options: oprions }), document.getElementById("app"));
+    //transition: false
+    // whenTransition: function() {
+    //   console.log("whenTransition");
+    // }
+  } };
+
+// ReactDOM.render(<App options={oprions} />, document.getElementById("app"));
+_reactDom2.default.render(_react2.default.createElement(_App2.default, oprions), document.getElementById("app"));
 
 /***/ }),
 /* 84 */
@@ -22337,42 +22338,39 @@ var App = function (_React$Component) {
   function App(props) {
     _classCallCheck(this, App);
 
+    // this.defaultOption = {
+    //   openAtStart: true, // [boolean] true | false
+    //   // 設定啟動後是否要自動開或合，若設為false，就不要自勳開合；若為true是馬上自動開合；若為數字是幾毫秒之後開合
+    //   autoToggle: true, // [boolean|number] true | false | 3000
+    //   button: {
+    //     closeText: "收合", // [string]
+    //     openText: "展開", // [string]
+    //     class: "btn" // [string]
+    //   },
+    //   class: {
+    //     closed: "closed", // [string]
+    //     closing: "closing", // [string]
+    //     opened: "opened", // [string]
+    //     opening: "opening" // [string]
+    //   },
+    //   transition: true,
+    //   whenTransition: function() {
+    //     console.log("whenTransition");
+    //   }
+    // };
     var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
-    var defaultOption = {
-      openAtStart: true, // [boolean] true | false
-      // 設定啟動後是否要自動開或合，若設為false，就不要自勳開合；若為true是馬上自動開合；若為數字是幾毫秒之後開合
-      autoToggle: true, // [boolean|number] true | false | 3000
-      button: {
-        closeText: "收合", // [string]
-        openText: "展開", // [string]
-        class: "btn" // [string]
-      },
-      class: {
-        closed: "closed", // [string]
-        closing: "closing", // [string]
-        opened: "opened", // [string]
-        opening: "opening" // [string]
-      },
-      transition: true,
-      whenTransition: function whenTransition() {
-        console.log("whenTransition");
-      }
-    };
-    // defaultOption = { ...defaultOption, ...this.props.options };
-    console.log(defaultOption);
     _this.state = {
-      option: _this.props.options,
-      myName: 2
+      option: _this.props
     };
-    _this.state.myName = _propTypes2.default.string;
     return _this;
   }
 
   _createClass(App, [{
     key: "render",
     value: function render() {
-      console.log(this.state.option);
+      // this.defaultOption = { ...this.defaultOption, ...this.str };
+      console.log("props", this.state.option);
       return _react2.default.createElement(
         "div",
         { className: "banner" },
@@ -22385,6 +22383,45 @@ var App = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = App;
+
+App.propTypes = {
+  openAtStart: _propTypes2.default.bool,
+  // // 設定啟動後是否要自動開或合，若設為false，就不要自勳開合；若為true是馬上自動開合；若為數字是幾毫秒之後開合
+  autoToggle: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.bool]),
+  button: _propTypes2.default.shape({
+    closeText: _propTypes2.default.string, // [string]
+    openText: _propTypes2.default.string, // [string]
+    class: _propTypes2.default.string // [string]
+  }),
+  class: _propTypes2.default.shape({
+    closed: _propTypes2.default.string, // [string]
+    closing: _propTypes2.default.string, // [string]
+    opened: _propTypes2.default.string, // [string]
+    opening: _propTypes2.default.string // [string]
+  }),
+  transition: _propTypes2.default.bool,
+  whenTransition: _propTypes2.default.func
+};
+App.defaultProps = {
+  openAtStart: true, // [boolean] true | false
+  // 設定啟動後是否要自動開或合，若設為false，就不要自勳開合；若為true是馬上自動開合；若為數字是幾毫秒之後開合
+  autoToggle: true, // [boolean|number] true | false | 3000
+  button: {
+    closeText: "收合", // [string]
+    openText: "展開", // [string]
+    class: "btn" // [string]
+  },
+  class: {
+    closed: "closed", // [string]
+    closing: "closing", // [string]
+    opened: "opened", // [string]
+    opening: "opening" // [string]
+  },
+  transition: true,
+  whenTransition: function whenTransition() {
+    console.log("whenTransition");
+  }
+};
 
 /***/ }),
 /* 185 */
