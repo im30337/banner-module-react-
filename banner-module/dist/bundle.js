@@ -10298,7 +10298,7 @@ var options = {
     opened: "opeaaned", // [string]
     opening: "opeaaning" // [string]
   },
-  //transition: false
+  //transition: false,
   whenTransition: function whenTransition() {
     console.log("--------whenTransition");
   }
@@ -22450,10 +22450,10 @@ App.defaultProps = {
     class: "btn" // [string]
   },
   class: {
-    closed: "aaa", // [string]
-    closing: "bbb", // [string]
-    opened: "ccc", // [string]
-    opening: "ddd" // [string]
+    closed: "closed", // [string]
+    closing: "closing", // [string]
+    opened: "opened", // [string]
+    opening: "opening" // [string]
   },
   transition: true,
   whenTransition: function whenTransition() {

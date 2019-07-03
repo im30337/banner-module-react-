@@ -16,7 +16,7 @@ const options = {
     opened: "opeaaned", // [string]
     opening: "opeaaning" // [string]
   },
-  //transition: false
+  //transition: false,
   whenTransition: function() {
     console.log("--------whenTransition");
   }
